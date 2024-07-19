@@ -46,6 +46,6 @@ def test_feature_build(df):
 if __name__=='__main__':
     curr_dir = pathlib.Path(__file__)
     home_dir = curr_dir.parent.parent.parent
-    data_path = hoem_dir.as_posix() + '/date/raw/test.csv'    
+    data_path = home_dir.as_posix() + '/date/raw/test.csv'    
     data = pd.read_csv(data_path, nrows=10)
     test_feature_build(data)
