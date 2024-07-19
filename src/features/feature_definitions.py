@@ -36,16 +36,15 @@ def create_dist_features(df):
     df.loc[:, 'distance_dummy_manhattan'] = dummy_manhattan_distance(df['pickup_latitude'].values, df['pickup_longitude'].values, df['dropoff_latitude'].values, df['dropoff_longitude'].values)
     df.loc[:, 'direction'] = bearing_array(df['pickup_latitude'].values, df['pickup_longitude'].values, df['dropoff_latitude'].values, df['dropoff_longitude'].values)
     
-    
+
 def test_feature_build(df):
     datetime_feature_fix(df)
     create_dist_features(df)
     print(df.head())
     
-
-if __name__=='__main__':
+if __name__ == '__main__':
     curr_dir = pathlib.Path(__file__)
     home_dir = curr_dir.parent.parent.parent
-    data_path = home_dir.as_posix() + '/date/raw/test.csv'    
+    data_path = home_dir.as_posix() + '/data/raw/test.csv' 
     data = pd.read_csv(data_path, nrows=10)
     test_feature_build(data)
