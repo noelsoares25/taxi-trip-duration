@@ -42,6 +42,11 @@ def test_feature_build(df):
     create_dist_features(df)
     print(df.head())
     
+def feature_build(df):
+    datetime_feature_fix(df)
+    create_dist_features(df)
+    return df
+    
 if __name__ == '__main__':
     curr_dir = pathlib.Path(__file__)
     home_dir = curr_dir.parent.parent.parent
