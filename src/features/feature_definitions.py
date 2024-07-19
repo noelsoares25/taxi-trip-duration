@@ -1,3 +1,4 @@
+
 import pathlib
 import pandas as pd
 import numpy as np
@@ -37,16 +38,30 @@ def create_dist_features(df):
     df.loc[:, 'direction'] = bearing_array(df['pickup_latitude'].values, df['pickup_longitude'].values, df['dropoff_latitude'].values, df['dropoff_longitude'].values)
     
 
+def create_datetime_features(df):
+    df.loc[:, 'pickup_weekday'] = df['pickup_datetime'].dt.weekday
+    df.loc[:, 'pickup_hour'] = df['pickup_datetime'].dt.hour
+    df.loc[:, 'pickup_minute'] = df['pickup_datetime'].dt.minute
+    df.loc[:, 'pickup_dt'] = (df['pickup_datetime'] - df['pickup_datetime'].min()).dt.total_seconds()
+    df.loc[:, 'pickup_week_hour'] = df['pickup_weekday'] * 24 + df['pickup_hour']
+
 def test_feature_build(df):
     datetime_feature_fix(df)
     create_dist_features(df)
+    create_datetime_features(df)
     print(df.head())
-    
-def feature_build(df):
+
+def feature_build(df, tag):
     datetime_feature_fix(df)
     create_dist_features(df)
-    return df
+    create_datetime_features(df)
+    do_not_use_for_training = ['id', 'pickup_datetime', 'dropoff_datetime',
+                            'check_trip_duration', 'pickup_date', 'pickup_datetime_group']
+    feature_names = [f for f in df.columns if f not in do_not_use_for_training]
+    print(f'We have {len(feature_names)} features in {tag}.')
+    return df[feature_names]
     
+
 if __name__ == '__main__':
     curr_dir = pathlib.Path(__file__)
     home_dir = curr_dir.parent.parent.parent
