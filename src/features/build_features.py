@@ -32,7 +32,7 @@ if __name__ == '__main__':
     test_data = feature_build(test_data, 'test-data')
     
     do_not_use_for_training = ['id', 'pickup_datetime', 'dropoff_datetime', 'check_trip_duration', 'pickup_date', 'avg_speed_h', 'avg_speed_m',
-                               'pickup_lat_bin', 'pickup_long_bin', 'center_lat_bin', 'center_long_bin', 'pickup_dt_bin', 'pickup_datetime_group']
+                               'pickup_dt_bin', 'pickup_datetime_group']
     
     feature_names = [f for f in train_data.columns if f not in do_not_use_for_training]
     print("We have %i features." % len(feature_names))
