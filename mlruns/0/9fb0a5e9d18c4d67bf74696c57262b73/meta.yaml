@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Users/NOEL%20SOARES/Desktop/DSMP/taxi-trip-duration/mlruns/0/9fb0a5e9d18c4d67bf74696c57262b73/artifacts
+end_time: 1721516365147
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9fb0a5e9d18c4d67bf74696c57262b73
+run_name: XGB Final Model
+run_uuid: 9fb0a5e9d18c4d67bf74696c57262b73
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721516357853
+status: 3
+tags: []
+user_id: NOEL SOARES
