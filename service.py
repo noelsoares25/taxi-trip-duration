@@ -3,6 +3,8 @@ from joblib import load
 from pydantic import BaseModel
 import pandas as pd
 
+from src.features.feature_definitions import feature_build
+
 app = FastAPI()
 
 class PredictionInput(BaseModel):
